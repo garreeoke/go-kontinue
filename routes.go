@@ -29,4 +29,10 @@ var routes = Routes{
 		"/v1/go-kontinue/record",
 		PostExample,
 	},
+	Route{
+		"PutExample",
+		"PUT",
+		"/v1/go-kontinue/record",
+		PutExample,
+	},
 }

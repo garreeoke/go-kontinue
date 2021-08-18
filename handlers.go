@@ -24,8 +24,25 @@ func Healthz(w http.ResponseWriter, r *http.Request) {
 }
 
 // PostExample create a new record nd store it in elastic
-// TODO, after prototype want data to go elsewhere and then be sent to elastic
 func PostExample(w http.ResponseWriter, r *http.Request) {
+
+	log.Println("PostExample received")
+	payload := Payload{
+		Code:       success,
+		W:          w,
+		Error:      nil,
+	}
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		payload.processError(err, "reading body")
+	}
+	payload.Data = body
+	payload.completeRequest()
+}
+
+// PostExample create a new record nd store it in elastic
+func PutExample(w http.ResponseWriter, r *http.Request) {
 
 	log.Println("PostExample received")
 	payload := Payload{
