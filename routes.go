@@ -35,4 +35,10 @@ var routes = Routes{
 		"/v1/go-kontinue/record",
 		PutExample,
 	},
+	Route{
+		"DeleteExample",
+		"DELEte",
+		"/v1/go-kontinue/record",
+		DeleteExample,
+	},
 }

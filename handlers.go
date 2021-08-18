@@ -41,10 +41,10 @@ func PostExample(w http.ResponseWriter, r *http.Request) {
 	payload.completeRequest()
 }
 
-// PostExample create a new record nd store it in elastic
+// PutExample create a new record nd store it in elastic
 func PutExample(w http.ResponseWriter, r *http.Request) {
 
-	log.Println("PostExample received")
+	log.Println("PutExample received")
 	payload := Payload{
 		Code:       success,
 		W:          w,
@@ -56,6 +56,20 @@ func PutExample(w http.ResponseWriter, r *http.Request) {
 		payload.processError(err, "reading body")
 	}
 	payload.Data = body
+	payload.completeRequest()
+}
+
+// DeleteExample create a new record nd store it in elastic
+func DeleteExample(w http.ResponseWriter, r *http.Request) {
+
+	log.Println("DeleteExample received")
+	data := "{\"deleted\": \"yes\"}"
+	payload := Payload{
+		Code:       success,
+		W:          w,
+		Error:      nil,
+		Data: []byte(data),
+	}
 	payload.completeRequest()
 }
 
